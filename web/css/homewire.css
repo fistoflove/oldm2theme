@@ -1,0 +1,85 @@
+section {
+    width: 100%;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    
+}
+.tc {
+    text-align: center;
+}
+.fwb {
+    background-color: #f0eaf5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 20px;
+}
+
+.hwb {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.hwb .fwb {
+    flex-grow: 1;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+div.row {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.row div {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    min-height: 20vh;
+    margin: 15px;
+    background-color: #f0eaf5;
+    flex-grow: 1;
+}
+
+.products .row div {
+    min-height: 30vh;
+}
+
+.brands .row div {
+    min-height: 10vh;
+}
+
+.h40 {
+    min-height: 40vh;
+}
+
+.h25 {
+    min-height: 25vh;
+}
+
+.h15 {
+    min-height: 15vh;
+}
+.cta {
+    margin-left: auto;
+    margin-right:auto;
+    max-width: 80%;
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+.m-auto {
+    margin: auto;
+}
+@media only screen and (min-width: 768px) {
+    .fwb {
+        margin-right: 25px;
+        margin-left: 25px;
+    }
+    .cta {
+    margin-left:auto;
+    margin-right:auto;
+    }
+  }

@@ -1,0 +1,134 @@
+@import "myvars.less";
+
+& when (@media-common =true) {
+    .catalog-product-view.page-layout-1column {
+        #tabcontent-reviews {
+            // .d-flex(column, unset, unset);
+            #product-review-container {
+                order: 2;
+            }
+            .block.review-add {
+                order        : 1;
+                border-bottom: 1px solid @border-color;
+                margin-bottom: 20px;
+                .review-form {
+                    .fieldset.review-fieldset {
+                        .review-box {
+                            .rating {
+                                label.label span {
+                                    font-weight: 500;
+                                    font-size  : 18px;
+                                }
+                            }
+                            .review {
+                                label {
+                                    font-weight: 500;
+                                    font-size  : 18px;
+                                }
+                                input.input-text,
+                                textarea {
+                                    width        : 100%;
+                                    padding      : 12px 20px;
+                                    margin       : 8px 0;
+                                    display      : inline-block;
+                                    border       : 1px solid @grey-color-2;
+                                    border-radius: 4px;
+                                    box-sizing   : border-box;
+                                }
+
+                                .review-form-actions {
+                                    button.action.submit {
+                                        background-color: @primary-color;
+                                        color           : #fff;
+                                        border          : 0;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .review-control-vote:before {
+        font-family: 'icomoon';
+        content    : '\e9d9''\e9d9''\e9d9''\e9d9''\e9d9' !important;
+    }
+}
+
+
+.media-width(@extremum, @break) when (@extremum ='max') and (@break =@screen__m) {
+    .catalog-product-view.page-layout-1column {
+        #tabcontent-reviews {
+            #product-review-container {
+                order: 2;
+            }
+            .block.review-add {
+                order        : 1;
+                border-bottom: 1px solid @border-color;
+                margin-bottom: 20px;
+                .review-form {
+                    .fieldset.review-fieldset {
+                        .review-box {
+                            .d-flex(column, unset, center);
+                            .rating {
+                                width: 100%;
+                                .control.review-control-vote {
+                                    margin-bottom: 30px;
+                                    margin-top   : 10px;
+                                    &:before {
+                                        font-size     : 24px;
+                                        height        : 24px;
+                                        letter-spacing: 10px;
+                                        line-height   : 24px;
+                                    }
+
+                                    label {
+                                        &:before {
+                                            font-size     : 24px;
+                                            height        : 24px;
+                                            letter-spacing: 10px;
+                                            line-height   : 24px;
+                                        }
+                                    }
+                                }
+                            }
+                            .review {
+                                width: 100%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+.media-width(@extremum, @break) when (@extremum ='min') and (@break =@screen__m) {
+    .catalog-product-view.page-layout-1column {
+        #tabcontent-reviews {
+            .block.review-add {
+                .review-form {
+                    .fieldset.review-fieldset {
+                        .legend.review-legend {
+                            font-size: 2.8rem;
+                        }
+                        .review-box {
+                            .d-flex(row, unset, center);
+                            .rating {
+                                max-width: 30%;
+                                flex     : 0 0 30%;
+                            }
+                            .review {
+                                max-width: 70%;
+                                flex     : 0 0 70%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

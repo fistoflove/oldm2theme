@@ -1,0 +1,167 @@
+@import "myvars.less";
+
+& when (@media-common =true) {
+    .annex-widget.store-alerts {
+        &.plain {
+            padding      : 10px;
+            text-align   : center;
+            background   : #fbfbfb;
+            margin-bottom: 10px;
+            font-size    : 1.5rem;
+            border       : 1px solid #f4f4f4;
+
+            .alert-wrapper {
+                .d-flex(row, center, center);
+
+                span.icon {
+                    margin-right: 10px;
+
+                    &:before {
+                        .icomoon(e944);
+                    }
+                }
+
+                p {
+                    margin: 0;
+                }
+            }
+        }
+
+        &.fancy {
+            .semi();
+            text-align         : center;
+            margin             : 0 0 10px;
+            padding            : 10px;
+            border             : 1px solid @primary-color;
+            border-bottom-width: 5px;
+            border-radius      : 5px;
+
+            .alert-wrapper {
+                font-size: 18px;
+
+                p {
+                    margin: 0;
+                    .sub {
+                        color      : #111;
+                        font-size  : 1.2rem;
+                        font-weight: 300;
+                    }
+                }
+            }
+        }
+
+        &.list {
+            ul.usp-slider {
+                margin-bottom: 0;
+                list-style: none;
+                text-align: center;
+                padding   : 0;
+                font-size: 1.3em;
+
+                span {
+                    margin-right: 5px;
+                    &:before {
+                        .icomoon(e901);
+                        color    : @primary-color;
+                        font-size: 25px;
+                    }
+                }
+
+                a {
+                    .semi();
+                    color: #333;
+
+                    &:hover {
+                        color: #333;
+                    }
+                }
+            }
+
+            #packaging {
+                span {
+                    margin-right: 5px;
+
+                    &:before {
+                        .icomoon(e91e);
+                        color    : @primary-color;
+                        font-size: 25px;
+                    }
+                }
+            }
+
+            #rewards {
+                span {
+                    margin-right: 5px;
+
+                    &:before {
+                        .icomoon(e934);
+                        color    : @primary-color;
+                        font-size: 25px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum ='min') and (@break =@screen__m) {
+    .annex-widget.store-alerts {
+        &.list {
+            .alert-wrapper {
+                padding: 0 30px;
+            }
+
+            ul.usp-slider {
+                .d-flex(row, unset, center);
+                .flex-even(3);
+
+                #delivery {
+                    .d-flex(row, flex-start, center);
+                }
+            }
+
+            #packaging {
+                .d-flex(row, center, center);
+            }
+
+            #rewards {
+                .d-flex(row, flex-end, center);
+            }
+        }
+    }
+}
+
+
+.media-width(@extremum, @break) when (@extremum ='max') and (@break =@screen__m) {
+    .annex-widget.store-alerts {
+        &.list {
+            ul.usp-slider {
+                li:not(:first-child):not(.tns-item) {
+                    display: none !important;
+                }
+
+                li a {
+                    font-size: 17px;
+                }
+
+                #delivery {
+                    display        : inline-flex;
+                    justify-content: center;
+                    align-items    : center;
+                }
+            }
+
+            #packaging {
+                display        : inline-flex;
+                justify-content: center;
+                align-items    : center;
+            }
+
+            #rewards {
+                display        : inline-flex;
+                justify-content: center;
+                align-items    : center;
+            }
+        }
+    }
+}

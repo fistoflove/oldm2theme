@@ -1,0 +1,49 @@
+<?php
+
+use Magento\Catalog\Block\Product\ReviewRendererInterface;
+
+/** @var \Mirasvit\Related\Block\Block $block */ 
+$products = $block->getProducts();
+
+if (count($products) == 0) {
+    return;
+}
+?>
+<div class="a-full" style="display:none;">
+    <div class="title-block">
+        <div class="title"><?= $block->getTitle() ?></div>
+        <div class="product-list">
+            <?php foreach ($products as $product) : ?>
+                <?php $_pdata = $block->getTheData($product) ?>
+                <div class="product-wrapper">
+                    <div class="product">
+                        <a href="<?= $block->escapeUrl($block->getProductUrl($product)) ?>" class="related-image">
+                            <img ci-src="<?= $block->getImage($product, 'customer_account_my_tags_tag_view')->getImageUrl() ?>" alt="<?= $block->escapeHtml($_pdata["name"]) ?>" class="related-image" ci-ratio="1" width="100" height="100" ci-params="func=bound" />
+                        </a>
+                        <div class="product-info">
+                            <a class="product-name" title="<?= $block->escapeHtml($_pdata["name"]) ?>" href="<?= $block->escapeUrl($_pdata["url"]) ?>">
+                                <?= $block->escapeHtml($_pdata["name"]) ?>
+                            </a>
+                            <div class="c-price">
+                                <span class="was">
+                                    <?php
+                                    if ($_pdata["sale"]) {
+                                        echo "<span class='old'><del>€" . number_format($_pdata['price'], 2) . "</span></del>";
+                                        echo "<span class='discount'>" . $_pdata['pchange'] . "% Off</span>";
+                                    }
+                                    ?>
+                                </span>
+                                <span class="now <?= ($_pdata["sale"] ? "sale" : "") ?>"><?= "€" . number_format($_pdata['fprice'], 2) ?></span>
+                            </div>
+                            <div class="c-reviews">
+                                <a class="c-link" href="<?= $_pdata["url"] . "#reviews" ?>">
+                                    <?= "<div class='stars' style='--rating: " . $_pdata["rating"] . "'></div>" ?>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach ?>
+        </div>
+    </div>
+</div>

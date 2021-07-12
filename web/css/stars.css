@@ -1,0 +1,38 @@
+:root {
+    --star-size      : 20px;
+    --large-star-size: 25px;
+    --star-color     : rgba(0,0,0,0.16);
+    --star-background: #ffaf01;
+    --main-color: #6A2B99;
+}
+
+.stars:not(.large) {
+    --percent  : calc(var(--rating) / 5 * 100%);
+    display    : inline-block;
+    font-size  : var(--star-size);
+    font-family: Times;
+    line-height: 1;
+}
+.large.stars {
+    --percent  : calc(var(--rating) / 5 * 100%);
+    display    : inline-block;
+    font-size  : var(--large-star-size);
+    font-family: Times;
+    line-height: 1;
+}
+
+.stars::before {
+    content                : '\e9d9 \e9d9 \e9d9 \e9d9 \e9d9';
+    font-family: "icomoon";
+    font-size: 15px;
+    background             : linear-gradient(90deg, var(--star-background) var(--percent), var(--star-color) var(--percent));
+    -webkit-background-clip: text;
+    background-clip        : text;
+    -webkit-text-fill-color: transparent;
+}
+.stars span {
+    font-size: 11px;
+    color: #999;
+    margin-left: 2px;
+    font-family: Roboto;
+}

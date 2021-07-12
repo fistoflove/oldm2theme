@@ -1,0 +1,22 @@
+<?php /** * Copyright © Magento, Inc. All rights reserved. * See COPYING.txt for license details. */ /** @var \Magento\Catalog\Block\Product\View\Details $block */ ?>
+<?php if ($detailedInfoGroup = $block->getGroupSortedChildNames('detailed_info', 'getChildHtml')) :?>
+<?php $pdata = $block->getTheData() ?> 
+<div class="product info detailed" id="tabs">
+    <?php $layout = $block->getLayout(); ?> <div
+        class="product data items" data-mage-init='{"tabs":{"openedState":"active"}}'><?php $mycounter = 0; ?>
+        <?php foreach ($detailedInfoGroup as $name) :?>
+        <?php $html = $layout->renderElement($name); if (!trim($html)) { continue; } $alias = $layout->getElementAlias($name); $label = $block->getChildData($alias, 'title'); ?>
+            <div class="tab-switch data item title <?= ( $mycounter++ == 0 ? "first": "") ?>" onclick="changeTab(this)" id="<?= $block->escapeHtmlAttr($alias) ?>">
+                <a class="data switch" href="javascript:;" id="tab-<?= $block->escapeHtmlAttr($alias) ?>-title">
+                    <?= /* @noEscape */ $label ?>
+                    <?php if ($block->escapeHtmlAttr($alias) == "reviews") { echo "<div class='stars' style='--rating: " . $pdata["rating"] . "'></div>"; }; ?>
+                </a>
+            </div>
+            <div class="data item content tabcontent" id="tabcontent-<?= ($block->escapeHtmlAttr($alias) == "reviews" ? $block->escapeHtmlAttr($alias): $block->escapeHtmlAttr($alias)) ?>">
+                <?= /* @noEscape */ $html ?>
+            </div>
+        <?php endforeach;?>
+    </div>
+</div>
+<?php endif; ?>
+<script>if (screen.width > 1023) { document.getElementById('description').classList.add('active');};</script>

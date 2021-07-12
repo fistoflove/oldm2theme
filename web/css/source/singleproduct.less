@@ -1,0 +1,581 @@
+@import "myvars.less";
+
+& when (@media-common =true) {
+    .catalog-product-view.page-layout-1column {
+        .columns {
+            .column.main {
+                font-size: 1.25em;
+
+                .product-info-main {
+                    .page-title {
+                        .condensed();
+                        font-size  : 4rem;
+                        font-weight: 400;
+                    }
+
+                    .product-rating {
+                        display    : flex;
+                        align-items: center;
+
+                        .star-rating {
+                            margin-right: 10px;
+                        }
+                    }
+
+                    .product-social-links {
+                        .action {
+                            &.towishlist {
+                                &:before {
+                                    color      : @red-color;
+                                    width      : unset;
+                                    line-height: unset;
+                                    font-size  : 25px;
+                                }
+
+                                span {
+                                    color: @red-color;
+                                }
+                            }
+
+                            &.mailto {
+                                &:before {
+                                    width      : unset;
+                                    line-height: unset;
+                                    font-size  : 25px;
+                                }
+                            }
+
+                        }
+                    }
+
+                    .related {
+                        border-bottom : 1px solid @border-color;
+                        padding-bottom: 10px;
+                    }
+
+                    .product-info-price {
+                        display        : flex;
+                        justify-content: space-between;
+                        margin         : 15px 0;
+                        border-bottom  : 1px solid @border-color;
+
+                        .price-box {
+                            margin-left: 5px;
+                            display    : flex;
+                            width      : unset;
+                            align-items: baseline;
+
+                            .price {
+                                .condensed();
+                                font-weight: 500;
+                            }
+
+                            .special-price {
+                                order: 2;
+
+                                .price {
+                                    .condensed();
+                                    font-weight: 500;
+
+                                }
+
+                            }
+
+                            .normal-price {
+                                order: 2;
+
+                                .price-container {
+                                    display    : flex;
+                                    align-items: center;
+
+                                    .price-label {
+                                        font-size   : 2rem;
+                                        margin-right: 10px;
+                                    }
+
+                                    .price {
+                                        .condensed();
+                                        font-weight: 500;
+                                    }
+                                }
+                            }
+
+                            .old-price {
+                                order: 1;
+
+                                .price-label {
+                                    display: none;
+                                }
+
+                                .price-wrapper {
+                                    .price {
+                                        text-decoration: line-through;
+                                        margin-right   : 10px;
+                                    }
+                                }
+                            }
+                        }
+
+                        .rewards__product-points {
+                            .condensed();
+                            color : @primary-color;
+                            margin: 15px 0;
+
+                            span.price {
+                                &:before {
+                                    content     : url('../images/coins.svg');
+                                    margin-right: 5px;
+                                }
+                            }
+                        }
+
+                        .availability.only {
+                            color: @red-color;
+                        }
+                    }
+
+                    .product-add-form {
+                        .box-tocart {
+                            display: flex;
+
+                            .fieldset {
+                                display    : flex;
+                                align-items: center;
+                                max-width  : 25%;
+                                margin     : 0 5px 0 0;
+
+                                .qty-buttons {
+                                    .qty-button {
+                                        margin             : 0;
+                                        cursor             : pointer;
+                                        width              : 200%;
+                                        height             : 50%;
+                                        line-height        : unset;
+                                        text-align         : center;
+                                        vertical-align     : middle;
+                                        background-color   : #f5f5f5;
+                                        font-size          : 130%;
+                                        font-weight        : 700;
+                                        -webkit-user-select: none;
+                                        -moz-user-select   : none;
+                                        -ms-user-select    : none;
+                                        user-select        : none;
+
+                                        &:hover {
+                                            background-color: #333;
+                                            color           : #fff;
+                                        }
+
+                                        &.increase,
+                                        &.decrease {
+                                            font-family           : 'icomoon';
+                                            font-style            : normal;
+                                            font-weight           : 400;
+                                            font-variant          : normal;
+                                            text-transform        : none;
+                                            -webkit-font-smoothing: antialiased;
+                                        }
+
+                                        &.increase {
+                                            margin-bottom: 2px;
+
+                                            &:before {
+                                                content: '\e959';
+
+                                            }
+                                        }
+
+                                        &.decrease:before {
+                                            content: '\e958';
+
+                                        }
+                                    }
+
+                                }
+
+                                .control {
+                                    margin-left: 5px;
+                                    height     : 100%;
+
+                                    input[type="number"] {
+                                        font-size: 25px;
+                                        border   : 1px solid @dark-border;
+                                    }
+
+                                    .input-text.qty {
+                                        margin-left  : 15px;
+                                        height       : 100%;
+                                        border-radius: 3px;
+                                    }
+                                }
+                            }
+
+                            .actions {
+                                max-width: 75%;
+                                flex     : 0 0 75%;
+
+                                button.primary {
+                                    padding        : 0;
+                                    display        : flex;
+                                    align-items    : center;
+                                    justify-content: space-between;
+                                    margin         : 0;
+
+                                    &:hover,
+                                    &:active,
+                                    &:focus {
+                                        background-color: lighten(@primary-color, 5%);
+
+                                        .icon {
+                                            background-color: lighten(@dark-primary, 5%);
+                                        }
+                                    }
+
+                                    .text {
+                                        max-width: 75%;
+                                        flex     : 0 0 75%;
+                                        padding  : 10px 0;
+
+                                        .main {
+                                            font-size: 1.3em;
+                                        }
+
+                                        .sub {
+                                            font-size: 0.7em;
+                                        }
+                                    }
+
+                                    .icon {
+                                        max-width       : 25%;
+                                        flex            : 0 0 25%;
+                                        background-color: @dark-primary;
+                                        padding         : 10px 0;
+
+                                        img {
+                                            width: 50px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .rewards {
+                        border-top: 1px solid @border-color;
+
+                        .points {
+                            .condensed();
+                            color    : @primary-color;
+                            margin   : 15px 0;
+                            font-size: 20px;
+
+                            span:before {
+                                content     : url('../images/coins.svg');
+                                margin-right: 5px;
+                            }
+                        }
+                    }
+
+                    .product-social-links {
+                        display        : flex;
+                        align-items    : center;
+                        justify-content: space-around;
+
+                        .product-addto-links {
+                            order: 1;
+
+                            .action.towishlist {
+                                margin-right: 0 !important;
+                            }
+
+                        }
+
+                        .product-price-promise {
+                            order          : 2;
+                            color          : @primary-color;
+                            text-decoration: none;
+
+                            span {
+                                text-transform: uppercase;
+                                display       : inline-block;
+                                font-weight   : 600;
+                            }
+
+                            &:before {
+                                vertical-align: middle;
+                                font-size     : 25px;
+                                content       : '\e934';
+                                font-family   : 'icomoon';
+                            }
+                        }
+                    }
+
+                    .product-brand {
+                        border-top : 1px solid #f4f4f4;
+                        padding-top: 10px;
+                    }
+                }
+
+                .product.info.detailed {
+                    .tab-switch {
+                        .data.switch {
+                            border-top-left-radius : @border-radius-1;
+                            border-top-right-radius: @border-radius-1;
+                            font-size              : 1.8rem;
+                            font-weight            : 500;
+
+                            &:after {
+                                color    : @primary-color;
+                                font-size: 25px;
+                            }
+                        }
+
+                        &.active {
+                            z-index         : 3;
+                            font-weight     : 500;
+                            font-size       : 2rem;
+                            color           : #000;
+                            background-color: #fff;
+
+                            .data.switch {
+                                z-index  : 10;
+                                font-size: 1.9rem;
+                            }
+                        }
+
+                        &:not(.active) {
+                            .data.switch {
+                                border: 0;
+
+                                &:hover {
+                                    background-color: #fcfcfc;
+                                }
+                            }
+                        }
+                    }
+
+                    .data.item.content {
+                        border    : 0;
+                        border-top: 1px solid @dark-border;
+
+                        .ppform-holder {
+                            min-height: 25vh;
+
+                            .left {
+                                .block-holder {
+                                    h2 {}
+
+                                    strong {
+                                        color: @primary-color;
+                                    }
+                                }
+                            }
+
+                            .right {
+                                text-align: center;
+
+                                .ppconfirm {
+                                    transition: height 0.2s ease-in;
+
+                                    &.submitted {
+                                        height: 78px;
+                                    }
+
+                                    &:not(.submitted) {
+                                        height  : 0;
+                                        overflow: hidden;
+                                    }
+
+                                    .message-success p {
+                                        margin   : unset;
+                                        font-size: 1.5em;
+                                    }
+                                }
+
+                                .ppform {
+                                    transition: height 0.3s ease-out;
+
+                                    &.submitted {
+                                        height  : 0;
+                                        overflow: hidden;
+                                        display : none;
+                                    }
+
+                                    &:not(.submitted) {
+                                        height  : initial;
+                                        overflow: hidden;
+                                    }
+
+                                    #ppform {
+                                        padding: 10px;
+
+                                        .name {
+                                            display: flex;
+
+                                            #firstname {
+                                                margin-right: 5px;
+                                            }
+                                        }
+
+                                        input {
+                                            width        : 100%;
+                                            padding      : 12px 20px;
+                                            margin       : 6px 0;
+                                            display      : inline-block;
+                                            border       : 1px solid #c9c9c9;
+                                            border-radius: 4px;
+                                            box-sizing   : border-box;
+                                        }
+
+                                        .action.primary {
+                                            width     : 100%;
+                                            margin-top: 6px;
+                                        }
+                                    }
+
+                                    .terms {
+                                        font-size: 0.8em;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum ='max') and (@break =@screen__m) {
+    .catalog-product-view.page-layout-1column {
+        .product-info-main {
+            .product-info-price {
+                .price-box {
+                    .price {
+                        font-weight: 500;
+                        font-size  : 3.5rem;
+                    }
+
+                    .special-price {
+                        .price {
+                            font-weight: 500;
+                            font-size  : 3.5rem;
+                        }
+                    }
+                }
+            }
+            .product-social-links {
+                font-size: 0.85em;
+            }
+        }
+
+        .product.info.detailed {
+            padding-top: 30px;
+
+            .product.data.items {
+                .tabcontent {
+                    display: none;
+                }
+            }
+
+            .tab-switch {
+                &:not(.active) {
+                    .data.switch {
+                        border-bottom: 1px solid #ccc;
+                    }
+                }
+            }
+
+            .data.item.content {
+                background-color: #f8f8f8;
+
+                .ppform-holder {
+                    .left {
+                        .block-holder {
+                            h2 {
+                                font-size: 1.2em;
+                            }
+                        }
+                    }
+
+                    .right {
+                        .message-success.success.message {
+                            font-size: 0.6em;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum ='min') and (@break =@screen__m) {
+    .catalog-product-view.page-layout-1column {
+        .product-info-main {
+            width: 49%;
+
+            .product-add-form {
+                .box-tocart {
+                    .actions {
+                        button.primary {
+                            width: 80%;
+                        }
+                    }
+                }
+            }
+        }
+
+        .product.media {
+            width: 45%;
+        }
+
+        .product.info.detailed {
+            padding-top: 60px;
+
+            .product.data.items {
+                .tabcontent:not(:nth-child(2)) {
+                    display: none;
+                }
+            }
+        }
+
+        .data.item.content {
+            border    : 0;
+            border-top: 1px solid @dark-border;
+
+            .ppform-holder {
+                display: flex;
+
+                .left {
+                    flex        : 0 0 55%;
+                    max-width   : 55%;
+                    margin-right: 10px;
+
+                    .block-holder {
+                        h2 {
+                            font-size: 2em;
+                        }
+                    }
+                }
+
+                .right {
+                    flex       : 0 0 45%;
+                    max-width  : 45%;
+                    overflow   : hidden;
+                    margin-left: 10px;
+                    display    : flex;
+                    align-items: center;
+                    flex-wrap  : wrap;
+
+                    .ppform {
+                        flex: 0 0 100%;
+                    }
+
+                    .ppconfirm {
+                        flex: 0 0 100%;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,64 @@
+<?php /** * Copyright © Magento, Inc. All rights reserved. * See COPYING.txt for license details. *//** * Product view template * * @var $block \Magento\Catalog\Block\Product\View */?> <?php $_helper = $this->helper(Magento\Catalog\Helper\Output::class);
+$_product = $block->getProduct();
+$pdata = $block->getTheData($_product);?> 
+    <?php
+    $upSellCategories = $block->getUpSellCategories();
+    if (count($upSellCategories) > 0) {
+        ?>
+        <div class="related">
+            <div class="a-upsell">
+                <div class="title">Customers Also buy</div>
+                <div class="upsell-list-wrapper">
+                    <div class="upsell-product-list">
+        <?php
+        $upSellCount = 0;
+        foreach($upSellCategories as $upSellCat) {
+            $upSellProducts = $block->getUpSellProducts($upSellCat);
+            foreach($upSellProducts as $upSellProduct) {
+                $pupdata = $block->getTheData($upSellProduct);
+                if($upSellCount <= 3) {
+                    ?> 
+                    <div class="upsell-product">
+                        <div class="upsell-product-info-container">
+                            <div class="upsell-product-choice">
+                                <input type="checkbox" class="related-checkbox" id="related-checkbox<?= $upSellProduct->getId(); ?>" name="related_products[]" value="<?= $upSellProduct->getId(); ?>">
+                                <label class="label" for="related-checkbox<?= $upSellProduct->getId() ?>" style="width:30px;">
+                                    <span class="upsell-product-image" style="min-height: 30px;width: 30px;">
+                                        <img style="min-height: 30px;min-width: 30px;" class="upsell-product-image-photo" ci-src="<?= $block->getImage($upSellProduct, 'product_page_upsell')->getImageUrl(); ?>" ci-ratio="1" width="30" height="30" ci-params="func=bound" />
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="upsell-product-item-info">
+                                <span class="upsell-product-name"><?= $block->escapeHtml($pupdata["name"]) ?></span>
+                                <div class="upsell-product-price">
+                                    <span class="final-price">
+                                        <span id="product-price-<?= $upSellProduct->getId() ?>" data-price-amount="<?= number_format($pupdata['fprice'], 2) ?>" data-price-type="finalPrice" class="price-wrapper "><?= "€" . number_format($pupdata['fprice'], 2); ?></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php
+                }
+                $upSellCount++;
+            }
+        }
+        ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <?php
+    }
+    ?>
+<div class="product-add-form">
+    <form data-product-sku="<?=$block->escapeHtmlAttr($_product->getSku())?>" action="<?=$block->escapeUrl($block->getSubmitUrl($_product))?>" method="post" id="product_addtocart_form"<?php if ($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif;?>><input type="hidden" name="product" value="<?=(int) $_product->getId()?>" /><input type="hidden" name="selected_configurable_option" value="" /><input type="hidden" name="related_product" id="related-products-field" value="" /><input type="hidden" name="item" value="<?=(int) $block->getRequest()->getParam('id')?>" /><?=$block->getBlockHtml('formkey')?> <?=$block->getChildHtml('form_top')?> <?php if (!$block->hasOptions()): ?> <?=$block->getChildHtml('product_info_form_content')?> <?php else: ?> <?php if ($_product->isSaleable() && $block->getOptionsContainer() == 'container1'): ?> <?=$block->getChildChildHtml('options_container')?> <?php endif;?> <?php endif;?> <?php if ($_product->isSaleable() && $block->hasOptions() && $block->getOptionsContainer() == 'container2'): ?> <?=$block->getChildChildHtml('options_container')?> <?php endif;?> <?=$block->getChildHtml('form_bottom')?></form></div><div class="rewards"><div class="points"><span><?="Earn <strong>" . $pdata["points"] . "</strong> Angel Coins"?></span></div></div><script type="text/x-magento-init">
+    {
+        "[data-role=priceBox][data-price-box=product-id-<?=$block->escapeHtml($_product->getId())?>]": {
+            "priceBox": {
+                "priceConfig":  <?=/* @noEscape */$block->getJsonConfig()?>
+            }
+        }
+    }
+</script>

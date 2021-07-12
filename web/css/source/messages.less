@@ -1,0 +1,34 @@
+@import "myvars.less";
+
+& when (@media-common =true) {
+    .message {
+        border-radius: 5px;
+
+        &>* {
+            margin-left: 15px;
+            display    : block;
+        }
+
+        &.error {
+            &:before {
+                .icomoon-message-icon(e907, #e02b27, 20);
+            }
+        }
+
+        &>*:first-child:before {
+            content: none !important;
+        }
+
+        &.success {
+            &:before {
+                .icomoon-message-icon(e910, #006400, 30);
+            }
+        }
+
+        &.info {
+            &:before {
+                .icomoon-message-icon(e91c, #c07600, 24);
+            }
+        }
+    }
+}

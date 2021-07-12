@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta name="theme-color" content="#6a2b99"></meta>
+        <link src="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@100;200;300;400;500;600;700;800;900&amp;family=Barlow+Semi+Condensed:wght@100;200;300;400;500;700;800;900&amp;family=Barlow:wght@100;200;300;400;500;700;800;900&amp;display=swap" src_type="url" rel="stylesheet" />
+        <link src="js/events.js" />
+
+        <css src="css/styles-l.css" media="screen and (min-width: 1024px)" />
+
+        <remove src="css/print.css"/>
+        <remove src="mage/calendar.css"/>
+        <!-- Font Optimisation Start -->
+        <font src="fonts/opensans/semibold/opensans-600.woff2"/>
+        <font src="fonts/icomoon.woff2"/>
+        <!-- Font Optimisation Ends -->
+
+        <!-- <remove src="requirejs/require.js"/> -->
+
+        <!-- <css src="css/clean.css" rel="stylesheet" type="text/css"  /> -->
+
+    </head>
+    <body>
+        <referenceBlock name="cookie-status" remove="true"/>
+    </body>
+</page>

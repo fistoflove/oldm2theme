@@ -1,0 +1,11 @@
+<!--data-related-block-->
+<?php
+/** @var \Mirasvit\Related\Block\BlockWrapper $block */
+$html = $block->getInstanceHtml();
+if (!$html) {
+    return;
+}
+?>
+<div class="block-related block-<?= $block->getBlockId() ?>" data-related-block="<?= $block->getBlockId() ?>">
+    <?= $html ?>
+</div>

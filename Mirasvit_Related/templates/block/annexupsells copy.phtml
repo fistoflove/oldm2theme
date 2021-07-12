@@ -1,0 +1,48 @@
+<?php
+
+use Magento\Catalog\Block\Product\ReviewRendererInterface;
+
+/** @var \Mirasvit\Related\Block\Block $block */
+$products = $block->getProducts();
+
+if (count($products) == 0) {
+    return;
+}
+?>
+<script>
+    function inputLoaded(element) {
+        console.log(element);
+    }
+</script>
+<div class="a-upsell">
+    <div class="title"><?= $block->getTitle() ?></div>
+    <div class="upsell-list-wrapper">
+        <div class="upsell-product-list">
+            <?php foreach ($products as $product) : ?>
+                <?php $pdata = $block->getTheData($product) ?> 
+                <div class="upsell-product">
+                    <div class="upsell-product-info-container">
+                        <div class="upsell-product-choice">
+                            <input type="checkbox" class="related-checkbox" id="related-checkbox<?= $product->getId() ?>" name="related_products[]" value="<?= $product->getId() ?>">
+                            <label class="label" for="related-checkbox<?= $product->getId() ?>">
+                                <span class="upsell-product-image">
+                                    <img class="upsell-product-image-photo" src="<?= $block->getImage($product, 'product_page_upsell')->getImageUrl() ?>" max-width="30" max-height="30" />
+                                </span>
+                            </label>
+                        </div>
+                        <div class="upsell-product-item-info">
+                            <span class="upsell-product-name">
+                                <a class="upsell-product-link" title="<?= $block->escapeHtml($pdata["name"]) ?>" href="<?= $block->escapeUrl($block->getProductUrl($product)) ?>"><?= $block->escapeHtml($pdata["name"]) ?></a>
+                            </span>
+                            <div class="upsell-product-price">
+                                <span class="final-price">
+                                    <span id="product-price-<?= $product->getId() ?>" data-price-amount="<?= number_format($pdata['fprice'], 2) ?>" data-price-type="finalPrice" class="price-wrapper "><?= "€" . number_format($pdata['fprice'], 2) ?></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach ?>
+        </div>
+    </div>
+</div>

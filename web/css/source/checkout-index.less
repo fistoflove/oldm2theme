@@ -1,0 +1,48 @@
+@import "myvars.less";
+
+& when (@media-common =true) {
+    .checkout-index-index {
+
+        .hide-checkout,
+        .authentication-wrapper {
+            display: none !important;
+        }
+
+        .opc-progress-bar-item>span {
+
+            &:before,
+            &:after {
+                border: 0;
+            }
+        }
+
+        .opc-estimated-wrapper {
+            .estimated-block {
+                font-size  : 24px;
+                font-weight: 500;
+
+                .estimated-label {
+                    display: inline-block;
+                }
+            }
+
+            .minicart-wrapper {
+                margin: 0;
+            }
+        }
+    }
+}
+
+// .media-width(@extremum, @break) when (@extremum ='max') and (@break =@screen__m) {
+//     .checkout-index-index {
+
+//     }
+// }
+
+.media-width(@extremum, @break) when (@extremum ='min') and (@break =@screen__m) {
+    .checkout-index-index {
+        .holder-end {
+            display: none !important;
+        }
+    }
+}

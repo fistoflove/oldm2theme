@@ -1,0 +1,27 @@
+<?php 
+/*
+* @var $block \Magento\Catalog\Block\Product\AbstractProduct 
+* 
+*/
+?> 
+<?php 
+$_product = $block->getProduct();
+$pdata = $block->getTheData($_product); ?> 
+
+<div class="product-rating">
+    <div class="star-rating">
+        <?php 
+        if ($pdata["rating"] > 0) {
+            echo "<div title='" . $pdata["rating"] . " out of 5 Stars' class='large stars' style='--rating: " . $pdata["rating"] . "'></div>";
+        } else {
+            echo "<div title='No Reviews' class='large stars' style='--rating: 0'></div>";
+        }
+        ?>
+    </div>
+    <div class="rating-links">
+        <div class="review-count"></div>
+        <div class="add-review">
+            <a href="#tabs" onclick="changeTab(document.getElementById('reviews'));"><?=($pdata["rating"] > 0 ? "Add Your Review" : "Be the first to review this product")?></a>
+        </div>
+    </div>
+</div>

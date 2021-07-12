@@ -1,0 +1,238 @@
+@import (reference) "../source/lib/variables/_responsive.less";
+@import (reference) "../source/lib/_responsive.less";
+
+@primary-color       : #6A2B99;
+@dark-primary        : darken(@primary-color, 10%);
+@light-primary       : lighten(@primary-color, 10%);
+@light-primary-1     : lighten(@primary-color, 20%);
+@light-primary-2     : lighten(@primary-color, 30%);
+@light-primary-3     : lighten(@primary-color, 40%);
+@light-primary-4     : lighten(@primary-color, 50%);
+@border-color        : #f4f4f4;
+@dark-border         : darken(@border-color, 10%);
+@secondary-color     : #E7E6ED;
+@rose-color          : #f70058;
+@red-color           : #d02e2e;
+@dark-red            : darken(@red-color, 10%);
+@white-color         : #ffffff;
+@black-color         : #000000;
+@black-color-2       : #333333;
+@star-full-color     : #ffaf01;
+@star-empty-color    : #999;
+@grey-color-1        : #cecece;
+@grey-color-2        : #c9c9c9;
+@grey-color-3        : #f4f4f4;
+@grey-color-4        : #eaeaea;
+@grey-color-5        : #f8f8f8;
+@label-position      : .8em;
+@border-radius-1     : 3px;
+@header-margin-top   : 51px;
+@header-margin-bottom: @header-margin-top + 20px;
+@base-font-size      :~"calc(0.75em + 1.1vmin)";
+@m-font-size         :~"calc(0.75em + 1.25vmin)";
+@l-font-size         :~"calc(0.75em + 1.5vmin)";
+// @media-target        : 'all';
+// @media-common        : true;
+
+@icon-basket-add   : '\e963';
+@icon-basket-remove: '\e961';
+@icon-basket-delete: '\e960';
+@icon-basket-ok    : '\e962';
+
+
+.normal {
+    font-family: 'Barlow', sans-serif;
+}
+
+.semi {
+    font-family: 'Barlow Semi Condensed', sans-serif;
+}
+
+.condensed {
+    font-family: 'Barlow Condensed', sans-serif;
+}
+
+.hide {
+    display: none !important;
+}
+
+.hide-mobile {
+    @media @mobile {
+        display: none !important;
+    }
+}
+
+.grey-button {
+    border-radius  : 3px;
+    background     : #eee;
+    border         : none;
+    color          : #333;
+    cursor         : pointer;
+    font-weight    : 600;
+    padding        : 10px 10px 10px 10px;
+    text-decoration: none;
+    box-shadow     : none;
+}
+
+.h100pc {
+    height: 100%;
+}
+
+.noselect {
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select  : none;
+    /* Safari */
+    -khtml-user-select   : none;
+    /* Konqueror HTML */
+    -moz-user-select     : none;
+    /* Old versions of Firefox */
+    -ms-user-select      : none;
+    /* Internet Explorer/Edge */
+    user-select          : none;
+    /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+}
+
+.d-flex(@direction: row, @justify: unset, @align: unset) {
+    display        : flex;
+    flex-direction : @direction;
+    justify-content: @justify;
+    align-items    : @align;
+}
+
+.flex-fixed(@width: 50%) {
+    max-width: @width;
+    flex     : 0 0 @width;
+}
+
+.icomoon(@icon) {
+    content    : "\@{icon}";
+    font-family: "icomoon";
+}
+
+.icomoon-message-icon(@icon, @color, @fsize) {
+    content                : "\@{icon}";
+    font-family            : "icomoon";
+    font-size              : @fsize*1px;
+    line-height            : @fsize*1px;
+    -webkit-font-smoothing : antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color                  : @color;
+    vertical-align         : middle;
+    display                : inline-block;
+    left                   : 20px;
+    top                    : 25%;
+    position               : absolute;
+    text-align             : center;
+}
+
+.flex-even(@items) {
+    &>* {
+        max-width: 100% / @items;
+        flex     : 0 0 100% / @items;
+    }
+}
+
+.max-width(@pixels: 1280) {
+    max-width   : @pixels*1px;
+    margin-left : auto;
+    margin-right: auto;
+}
+
+.hide-desktop {
+    @media @desktop {
+        display: none !important;
+    }
+}
+
+.hide-mobile {
+    @media @mobile {
+        display: none !important;
+    }
+}
+
+@screen-xs: 320px;
+@screen-s : 640px;
+@screen-m : 768px;
+@screen-l : 1024px;
+@screen-xl: 1200px;
+
+
+@phone-min: (@screen-xs + 1); // 321
+
+@phone-max: (@screen-m - 1); // 767
+
+@tablet-max: (@screen-l - 1); // 1023
+
+@screen-l-max: (@screen-xl - 1); // 1199
+
+
+@phone-xs: ~"only screen and (max-width: @{screen-xs})"; // max 320
+
+@phone: ~"only screen and (min-width: @{phone-min}) and (max-width: @{phone-max})"; // 321 to 767
+
+@tablet: ~"only screen and (min-width: @{screen-m}) and (max-width: @{tablet-max})"; // 768 to 1023
+
+@mobile: ~"only screen and (max-width: 1023px)"; // max 1023
+
+@desktop          :~"only screen and (min-width: 1024px)"; // 1024 
+@desktop-strict   :~"only screen and (min-width: 1024px) and (max-width: 1199px)"; // 1024 to 1199
+// @desktop-strict: ~"only screen and (min-width: @{screen-l}) and (max-width: @{screen-l-max})"; // 1024 to 1199
+
+@desktop-xl: ~"only screen and (min-width: @{screen-xl})"; // 1200
+
+/* CSS Animations */
+@keyframes beat {
+
+    0%,
+    50%,
+    100% {
+        transform: scale(1, 1);
+    }
+
+    30%,
+    80% {
+        transform: scale(0.92, 0.95);
+    }
+}
+
+@keyframes pulse {
+
+    0%,
+    50%,
+    100% {
+        background: #fee;
+    }
+
+    30%,
+    80% {
+        background: #fff;
+    }
+}
+
+
+@keyframes wiggle {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    20% {
+        transform: rotate(5deg);
+    }
+
+    40% {
+        transform: rotate(-5deg);
+    }
+
+    60% {
+        transform: rotate(5deg);
+    }
+
+    80% {
+        transform: rotate(-5deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}

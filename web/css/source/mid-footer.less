@@ -1,0 +1,166 @@
+@import "myvars.less";
+
+& when (@media-common =true) {
+
+    // all
+    .mid-footer-container {
+        background-color: @grey-color-5;
+
+        .mid-footer {
+            display: flex;
+
+            .left {
+                .footer-logo {
+                    img {
+                        width : 200px;
+                        height: auto;
+                    }
+                }
+
+                .phone {
+                    display    : flex;
+                    align-items: center;
+
+                    .phone-icon {
+                        margin-right: 10px;
+
+                        &:after {
+                            .icomoon(e903);
+                            font-size: 4em;
+                            color    : @primary-color;
+                        }
+                    }
+
+                    .phone-number {
+                        display       : flex;
+                        flex-direction: column;
+                        font-weight   : 600;
+
+                        .number-text {
+                            font-weight: 300;
+
+                        }
+
+                        .number {
+                            font-size: 1.8em;
+
+                            a {
+                                text-decoration: none;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .right {
+                display        : flex;
+                justify-content: space-around;
+                align-items    : flex-start;
+
+                .links-one,
+                .links-two,
+                .links-three {
+                    div {
+                        padding-bottom: 0.5rem;
+                        border-bottom : 2px solid @primary-color;
+
+                        strong {
+                            font-size  : 1.2em;
+                            font-weight: 600;
+                        }
+                    }
+
+                    ul {
+                        list-style  : none;
+                        padding-left: 0;
+                        padding-top : 1rem;
+
+                        li {
+                            margin-bottom: 0.5rem;
+
+                            a {
+                                font-size      : 1.1em;
+                                color          : @black-color-2;
+                                text-decoration: none;
+
+                                &.facebook:before {
+                                    .icomoon(e908);
+                                    content       : "\e908";
+                                    color         : #4267B2;
+                                    margin-right  : 10px;
+                                    font-size     : 1.2em;
+                                    vertical-align: middle;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum ='max') and (@break =@screen__m) {
+
+    //mobile only
+    .mid-footer-container {
+        .mid-footer {
+            flex-direction: column;
+            max-width     : 95%;
+            margin-left   : auto;
+            margin-right  : auto;
+
+            .left {
+                margin: 20px 0;
+                .footer-logo {
+                    text-align: center;
+                }
+                .phone {
+                    .lineb {
+                        display:block;
+                    }
+                }
+            }
+
+            .right {
+                flex-wrap: wrap;
+                margin: 20px 0;
+                .links-one {
+                    flex: 0 0 45%;
+                    max-width: 45%;
+                }
+                .links-two {
+                    flex: 0 0 45%;
+                    max-width: 45%;
+                }
+                .links-three {
+                    flex: 0 0 90%;
+                    max-width: 90%;
+                }
+            }
+        }
+    }
+
+}
+
+.media-width(@extremum, @break) when (@extremum ='min') and (@break =@screen__m) {
+    // desktop only
+
+    .mid-footer-container {
+        .mid-footer {
+            box-sizing  : border-box;
+            margin-left : auto;
+            margin-right: auto;
+            max-width   : 1280px;
+            padding     : 40px 30px;
+
+            .left {
+                flex: 0 0 40%;
+            }
+
+            .right {
+                flex: 0 0 60%;
+            }
+        }
+    }
+}

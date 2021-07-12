@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <move element="page.main.title" destination="product.info.main" before="-"/>
+        <move element="product.info.stock.sku" destination="product.info.price" after="product.price.final"/>
+        <move element="product.info.review" destination="product.info.main" before="product.info.price"/>
+        <referenceBlock name="skip_gallery_after" remove="true"/>
+        <referenceBlock name="skip_gallery_before" remove="true"/>
+        <referenceBlock name="view.addto.compare" remove="true"/>
+        <referenceBlock name="product.info.sku" remove="true" /> <!-- REMOVES SKU -->
+        <referenceContainer name="product.info.social">
+            <block class="Magento\Framework\View\Element\Template" template="Annex_Helper::product/pricepromise.phtml" name="price_promise" after="-"/>
+        </referenceContainer>
+        <referenceBlock class="Magento\Review\Block\Product\Review" name="reviews.tab"  template="Annex_Helper::review/review.phtml">
+            <arguments>
+                <argument name="sort_order" xsi:type="string">30</argument>
+            </arguments>
+        </referenceBlock>
+        <referenceContainer name="product.info.main">
+            <block class="Magento\Catalog\Block\Product\View" name="product.info.brand" template="Annex_Helper::product/brand.phtml" after="product.info.type" />
+        </referenceContainer>
+        <referenceBlock name="product.info.details">
+            <block class="Magento\Catalog\Block\Product\View\Description" name="product.info.delivery" as="delivery.info" template="Annex_Helper::product/deliveryinformation.phtml" group="detailed_info">
+                <arguments>
+                    <argument name="css_class" xsi:type="string">delivery-info</argument>
+                    <argument name="at_label" xsi:type="string">none</argument>
+                    <argument name="title" translate="true" xsi:type="string">Delivery  Returns</argument>
+                    <argument name="sort_order" xsi:type="string">30</argument>
+                </arguments>
+            </block>
+            <block class="Annex\Helper\Block\Rewrite\AnnexDescription" name="product.info.price.promise" as="price.promise" template="Annex_Helper::product/pricepromiseform.phtml" group="detailed_info">
+                <arguments>
+                    <argument name="css_class" xsi:type="string">price-promise</argument>
+                    <argument name="at_label" xsi:type="string">none</argument>
+                    <argument name="title" translate="true" xsi:type="string">Price Promise</argument>
+                    <argument name="sort_order" xsi:type="string">50</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+    </body>
+</page>

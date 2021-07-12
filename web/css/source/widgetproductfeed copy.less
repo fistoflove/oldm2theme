@@ -1,0 +1,81 @@
+@import "myvars.less";
+
+& when (@media-common = true) {
+    .block.widget {
+        &.annex-slider-product-feed {
+            overflow     : hidden;
+            margin-bottom: 25px !important;
+            margin-top   : 25px;
+        }
+
+        &.annex-fixed-product-feed {
+            margin-bottom: 25px !important;
+            margin-top   : 25px;
+        }
+
+        &.annex-fixed-product-feed,
+        &.annex-slider-product-feed {
+            .block-title {
+                margin-bottom  : 10px !important;
+                background     : #f0eaf5;
+                display        : flex;
+                justify-content: space-between;
+                align-items    : center;
+
+                &>* {
+                    .condensed();
+                    padding       : 10px 15px;
+                    color         : #555;
+                    letter-spacing: 1px;
+                    text-transform: uppercase;
+                    font-weight   : 500;
+                    margin-bottom : 0 !important;
+                }
+
+                .title {
+                    .condensed();
+                    font-size: 20px;
+                }
+
+                .more {
+                    font-size      : 15px;
+                    text-decoration: none;
+
+                    &:hover {
+                        color: @red-color;
+                    }
+                }
+            }
+
+            .widget-product-grid-slider {
+                display: inline-flex;
+
+                .widget-product-card-slider-wrapper {
+                    margin: 0 5px 20px;
+                    width : 250px;
+
+                    .product-card {
+                        background-color: #fbfbfb;
+
+                        .c-image {
+                            background-color: #fff;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum ='min') and (@break =@screen__m) {
+    .block.widget {
+
+        &.annex-fixed-product-feed,
+        &.annex-slider-product-feed {
+            .product-grid {
+                margin-left : 0 !important;
+                margin-right: 0 !important;
+            }
+        }
+    }
+}

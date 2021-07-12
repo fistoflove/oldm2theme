@@ -1,0 +1,293 @@
+@import "myvars.less";
+@import "fixes.less";
+@import "custom.less";
+@import "header.less";
+@import "footer.less";
+@import "mid-footer.less";
+@import "messages.less";
+@import "checkout.less";
+@import "checkout-index.less";
+@import "singleproduct.less";
+@import "review.less";
+@import "tinyslider.less";
+@import "stars.less";
+@import "categoryproductlist.less";
+@import "productgrid.less";
+@import "widgetproductfeed.less";
+@import "widgetstorealerts.less";
+@import "cms-page-layout.less";
+@import "widgettextimage.less";
+
+& when (@media-common =true) {
+    .filter-options-content a {
+        &:visited {
+            color: #494949;
+        }
+    }
+    /* MODIFICATIONS */
+
+    /* Buttons */
+    .action {
+        &.primary {
+            background-color: @primary-color;
+            border-color    : @primary-color;
+            font-size       : 16px;
+
+            &:hover,
+            &:active,
+            &:focus {
+                background-color: @dark-primary;
+                border-color    : @dark-primary;
+            }
+        }
+        &.grey {
+            .grey-button();
+            &:hover,
+            &:active,
+            &:focus {
+                background: #333;
+                color: #fff;
+            }
+        }
+    }
+}
+
+/* Buttons end */
+
+
+
+
+.block.block-content {
+    display: none;
+
+    @media @desktop {
+        display: block
+    }
+}
+
+
+.a-cart {
+    .title-block {
+        margin-left : 20px;
+        margin-right: 20px;
+    }
+
+    div.title {
+        padding-top   : 15px;
+        padding-bottom: 15px;
+        border-bottom : 1px solid #c1c1c1;
+        line-height   : 24px;
+        font-size     : 2rem;
+
+    }
+
+    .product-grid {
+        padding-top: 20px;
+        margin     : 0;
+    }
+}
+
+/* WITH SIDEBAR END */
+
+
+
+
+/* cat sidebar start */
+
+.filter {
+    .block-subtitle {
+        border-bottom: 1px solid @border-color;
+        font-size    : 18px;
+        font-weight  : 500;
+        color        : @primary-color;
+
+    }
+
+    .filter-options-item {
+        border-bottom: 1px solid @border-color;
+    }
+
+    .filter-options-title {
+        font-weight: 400;
+        color      : @primary-color;
+    }
+
+    li.item._highlight {
+        input[type="checkbox"] {
+            border: .1rem solid @border-color;
+
+            &:checked:before {
+                background: @primary-color  !important;
+            }
+        }
+
+        label {
+            color: @primary-color  !important;
+        }
+    }
+}
+
+
+/* cat sidebar end */
+
+
+/* cat main start */
+#sorter {
+    background-color: unset;
+    box-shadow      : inset 0 1px 0 0 #ffffff, inset 0 -1px 0 0 @border-color;
+}
+
+.action.sorter-action.sort-desc {
+    .hide();
+}
+
+/* cat main end */
+
+/******************************
+        PRODUCT LABELS START
+*******************************/
+
+
+.c-image {
+    .labels:not(.hide) {
+        line-height   : 1;
+        color         : #fff;
+        font-weight   : 600;
+        text-transform: uppercase;
+        position      : absolute;
+        z-index       : 2;
+        font-size     : 10px;
+
+        &.top {
+            top: @label-position;
+
+            &.left {
+                left: @label-position;
+            }
+
+            &.right {
+                right: @label-position;
+            }
+        }
+
+        &.bottom {
+            bottom: @label-position;
+
+            &.left {
+                left: @label-position;
+            }
+
+            &.right {
+                right: @label-position;
+            }
+        }
+
+        div {
+            color        : #ffffff;
+            padding      : 5px 11px;
+            margin-bottom: 5px;
+
+            &.sale {
+                background-color: @red-color;
+            }
+
+            &.new {
+                background-color: #62b959;
+            }
+
+            &.rewards {
+                background-color: @primary-color;
+            }
+        }
+
+        &.hide {
+            display: none;
+        }
+    }
+}
+
+/******************************
+        PRODUCT LABELS END
+*******************************/
+
+
+/******************************
+       RELATED PRODUCT START
+*******************************/
+
+.a-full {
+    .condensed();
+
+    .title-block {
+        .title {
+            padding-top   : 15px;
+            padding-bottom: 15px;
+            border-bottom : 1px solid #c1c1c1;
+            line-height   : 24px;
+            font-size     : 2.4rem;
+        }
+    }
+
+
+    .product-list {
+        display       : flex;
+        flex-wrap     : wrap;
+        padding-top   : 20px;
+        flex-direction: row;
+        align-items   : center;
+
+        .product-wrapper {
+            max-width: ~"calc(100% - 10px)";
+            flex     : 0 0 ~"calc(100% - 10px)";
+            margin   : 0 5px 5px;
+
+            @media @tablet {
+                max-width: ~"calc(49.9% - 10px)";
+                flex     : 0 0 ~"calc(49.9% - 10px)";
+                margin   : 0 5px 10px;
+            }
+
+            @media @desktop {
+                max-width: ~"calc(33.3% - 10px)";
+                flex     : 0 0 ~"calc(33.3% - 10px)";
+                margin   : 0 5px 20px;
+            }
+
+            .product {
+                display      : flex;
+                border-bottom: 1px solid @border-color;
+
+                .related-image {
+                    min-height   : 100px;
+                    min-width    : 100px;
+                    margin-bottom: 10px;
+                    margin-right : 10px;
+                }
+
+                .product-info {
+
+                    .product-name,
+                    .product-name:visited {
+                        color: @black-color-2;
+                        font-size: 1.8rem;
+                    }
+
+                    .c-price {
+                        font-size: 2rem;
+                        .was {
+                            display: none;
+                        }
+
+                        .now {
+                            .semi();
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+/******************************
+        RELATED PRODUCT END
+*******************************/

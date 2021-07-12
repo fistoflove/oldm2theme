@@ -1,0 +1,155 @@
+@import "myvars.less";
+
+& when (@media-common =true) {
+    footer.page-footer {
+        background-color: @primary-color;
+
+        .footer.content {
+            display: flex;
+
+            .text-left {
+                .semi();
+                color: @white-color;
+                order: 1;
+
+                .icon {
+                    &:after {
+                        .icomoon(e944);
+                        font-size     : 2.5em;
+                        line-height   : 40px;
+                        vertical-align: top;
+                    }
+                }
+
+                .cta-main {
+                    font-size  : 2em;
+                    font-weight: 500;
+                    margin-left: 10px;
+                }
+
+                .cta-sub {
+                    font-size  : 1.4em;
+                    margin-left: 10px;
+                    strong:after {
+                        content     : url('../images/coins.svg');
+                        margin-left: 5px;
+                    }
+                }
+            }
+
+            .block.newsletter {
+                text-align: center;
+                order: 2;
+
+                .form.subscribe {
+                    .control {
+                        &:before {
+                            margin     : 0 0 0 15px;
+                            line-height: 40px;
+                        }
+
+                        #newsletter {
+                            border       : 0;
+                            border-radius: 40px;
+                            padding      : 0 45px 0 45px;
+                            height       : 40px;
+                            background   : #f9f9f9;
+                        }
+                    }
+
+                    .action.subscribe.primary {
+                        color           : @primary-color;
+                        background-color: #fff;
+                        border          : 0;
+                        border-radius   : 40px;
+                        padding         : 12px 15px;
+                        margin-left     : -40px;
+                    }
+                }
+            }
+        }
+    }
+
+    .cp-ico {
+        background-color: @grey-color-4;
+        padding: 5px 0;
+        .copyright {
+            font-weight: 500;
+            font-size  : 14px;
+            color    : @primary-color;
+        }
+
+        .footer-icons {
+            color    : @primary-color;
+            font-size: 1.7em;
+
+            .visa:after {
+                .icomoon(e93c);
+            }
+
+            .mc:after {
+                .icomoon(e93d);
+            }
+
+            .paypal:after {
+                .icomoon(e93a);
+            }
+        }
+    }
+}
+
+
+.media-width(@extremum, @break) when (@extremum ='max') and (@break =@screen__m) {
+    footer.page-footer {
+        .footer.content {
+            flex-direction: column;
+            padding       : 20px;
+
+            .text-left {
+                text-align: center;
+
+                .cta-sub {
+                    font-size: 1.2em;
+                    display  : block;
+                }
+            }
+
+            .block.newsletter {
+                margin-top: 20px;
+            }
+        }
+    }
+
+    .cp-ico {
+        text-align: center;
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum ='min') and (@break =@screen__m) {
+    footer.page-footer {
+        .footer.content {
+            flex-direction : row;
+            justify-content: space-around;
+            align-items    : center;
+            padding        : 30px 20px;
+
+            .text-left {
+                flex     : 0 0 60%;
+                max-width: 60%;
+            }
+
+            .block.newsletter {
+                flex         : 0 0 40%;
+                max-width    : 40%;
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    .cp-ico {
+        display        : flex;
+        justify-content: space-around;
+        align-items    : center;
+
+    }
+}

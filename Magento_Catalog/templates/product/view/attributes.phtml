@@ -1,0 +1,23 @@
+<?php 
+$_helper = $this->helper(Magento\Catalog\Helper\Output::class);
+$_product = $block->getProduct();
+?> 
+<?php if ($_additional = $block->getAdditionalData()): ?> 
+<div class="additional-attributes-wrapper table-wrapper">
+    <table class="data table additional-attributes" id="product-attribute-specs-table">
+        <caption class="table-caption"><?=$block->escapeHtml(__('More Information'))?></caption>
+        <tbody>
+            <?php foreach ($_additional as $_data): ?>
+            <?php 
+                $a_value = $_helper->productAttribute($_product, $_data['value'], $_data['code']);
+                $the_value = ($_data['code'] == "length" | $_data['code'] == "length_inches" ? number_format($a_value, 1) : $a_value);
+                ?> 
+            <tr>
+                <th class="col label" scope="row"><?=$block->escapeHtml($_data['label'])?></th>
+                <td class="col data" data-th="<?=$block->escapeHtmlAttr($_data['label'])?>"><?= $the_value ?></td>
+            </tr>
+            <?php endforeach;?>
+        </tbody>
+    </table>
+</div>
+<?php endif;?>

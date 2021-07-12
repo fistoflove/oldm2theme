@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="header.panel">
+            <block class="Magento\Framework\View\Element\Html\Links" name="header.links">
+                <arguments>
+                    <argument name="css_class" xsi:type="string">header links</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+        <referenceContainer name="header.container">
+            <block class="Magento\Framework\View\Element\Template" name="topbar" template="Annex_Helper::html/header/topbar.phtml" before="-" />
+            <container name="menu-holder" as="menu-holder" label="Menu Holder" htmlTag="div" htmlClass="menu-holder">
+                <block class="Magento\Framework\View\Element\Template" name="menu-toggler" template="Annex_Helper::html/header/menuholder.phtml" />
+                <block class="Annex\Helper\Block\Rewrite\Html\Header\Logo" name="alt-logo" template="Annex_Helper::html/header/logo.phtml" />
+                <container name="holder-end" as="holder-end" label="Holder End" htmlTag="div" htmlClass="holder-end">
+                    <block class="Magento\Framework\View\Element\Template" name="holder-end-block" template="Annex_Helper::html/header/holderend.phtml" />
+                </container>
+            </container>
+        </referenceContainer>
+        <referenceBlock name="catalog.topnav">
+            <block class="Annex\Helper\Block\Rewrite\LinkHelper" name="extra-links" template="Annex_Helper::html/header/extralinks.phtml">
+                <arguments>
+                    <argument name="label" xsi:type="string" translate="true">Your Account</argument>
+                    <argument name="path" xsi:type="string" translate="true">customer/account/login/</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+        <referenceContainer name="page.top">
+            <referenceBlock name="store.links" remove="true" />
+            <referenceBlock name="store.settings" remove="true" />
+        </referenceContainer>
+        <referenceContainer name="footer">
+            <block class="Magento\Store\Block\Switcher" name="store_switcher" as="store_switcher" after="footer_links" template="Magento_Store::switch/stores.phtml"/>
+            <block class="Annex\Helper\Block\Rewrite\LinkHelper" name="newsletter-text" template="Annex_Helper::html/newslettertext.phtml" />
+             <referenceBlock name="footer_links" remove="true"/>
+        </referenceContainer>
+        <referenceContainer name="page.wrapper">
+        <container name="mid-footer-container" after="footer-container" htmlTag="div" htmlClass="mid-footer-container">
+            <block class="Annex\Helper\Block\Rewrite\LinkHelper" name="mid-footer" template="Annex_Helper::html/midfooter.phtml" />
+        </container>
+        </referenceContainer>
+        <referenceBlock name="report.bugs" remove="true"/>
+        <referenceBlock name="top.search" remove="true"/>
+        <referenceBlock name="skip_to_content.target" remove="true"/>
+        <referenceBlock name="skip_to_content" remove="true"/>
+        <referenceBlock name="store_language" remove="true"/>
+        <move element="copyright" destination="before.body.end"/>
+        <move element="minicart" destination="holder-end"/>
+    </body>
+</page>
+ 

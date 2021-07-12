@@ -1,0 +1,39 @@
+@import "myvars.less";
+@import "lib/_responsive.less";
+
+
+.page-header {
+    @media @mobile {
+        margin-bottom: @header-margin-bottom;
+    }
+}
+
+& when (@media-common =true) {
+    :root {
+        --media-common: 10px;
+    }
+}
+
+& when (@media-target ='mobile') {
+    :root {
+        --media-taget-mobile: 10px;
+    }
+}
+
+& when (@media-target ='desktop') {
+    :root {
+        --media-taget-desktop: 10px;
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum ='max') and (@break =@screen__m) {
+    :root {
+        --media-width-mobile: 10px;
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum ='min') and (@break =@screen__m) {
+    :root {
+        --media-width-desktop: 10px;
+    }
+}
